@@ -95,13 +95,30 @@ function calculateFusion(aspects: Aspect[], existingMutationCount: number) {
 }
 
 export async function POST(request: NextRequest) {
+  let body: { aspects?: Aspect[]; cores?: Core[]; mutationCount?: number } = {};
+  
   try {
-    const body = await request.json();
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { success: false, error: 'Invalid JSON body' },
+      { status: 400 }
+    );
+  }
+
+  try {
     const { aspects, cores, mutationCount } = body;
 
     if (!aspects || aspects.length < 3) {
       return NextResponse.json(
         { success: false, error: 'At least 3 aspects required for fusion' },
+        { status: 400 }
+      );
+    }
+
+    if (!cores || cores.length === 0) {
+      return NextResponse.json(
+        { success: false, error: 'At least 1 core required for fusion' },
         { status: 400 }
       );
     }
@@ -218,7 +235,7 @@ Format as LitRPG with system messages, stat displays, and vivid descriptions.
           didMutate: false,
           synergyLevel: 'Basic',
         },
-        updatedCores: body.cores,
+        updatedCores: body.cores || [],
         statChanges: { control: 1, awareness: 1, dominance: 1 },
       },
       { status: 200 }
