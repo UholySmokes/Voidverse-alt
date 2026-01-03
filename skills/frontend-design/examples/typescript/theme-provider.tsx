@@ -28,7 +28,8 @@
  * ```
  */
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import * as React from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { Theme } from './design-tokens';
 
 // ============================================
