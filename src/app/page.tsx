@@ -490,7 +490,8 @@ export default function LitRPGGenerator() {
                         <p className="text-sm mt-2">Generate a story to begin your journey!</p>
                       </div>
                     ) : (
-                      gameState.story.map((segment) => (
+                      // If typing, exclude the last segment (it's being shown in the typewriter section)
+                      (isTyping ? gameState.story.slice(0, -1) : gameState.story).map((segment) => (
                         <motion.div
                           key={segment.id}
                           initial={{ opacity: 0, x: -20 }}
