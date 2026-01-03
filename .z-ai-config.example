@@ -1,6 +1,6 @@
 {
-  "baseUrl": "YOUR_API_BASE_URL",
-  "apiKey": "YOUR_API_KEY",
+  "baseUrl": "https://open.bigmodel.cn/api/paas/v4/",
+  "apiKey": "fc9138c3a945434d9004c9eb6410a8b7.vMLLa0XqrI5tflne",
   "chatId": "OPTIONAL_CHAT_ID",
   "userId": "OPTIONAL_USER_ID"
 }
