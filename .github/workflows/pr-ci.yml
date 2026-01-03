@@ -1,0 +1,114 @@
+name: PR CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  node-ci:
+    name: Node.js CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: TypeScript typecheck
+        run: npm run typecheck
+
+      - name: Check for test script
+        id: check-tests
+        run: |
+          if npm run test --dry-run 2>/dev/null; then
+            echo "has_tests=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_tests=false" >> $GITHUB_OUTPUT
+            echo "::notice::No tests configured, skipping test step"
+          fi
+
+      - name: Run tests
+        if: steps.check-tests.outputs.has_tests == 'true'
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+  python-ci:
+    name: Python CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for Python files
+        id: check-python
+        run: |
+          if find skills -name "*.py" -type f 2>/dev/null | grep -q .; then
+            echo "has_python=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_python=false" >> $GITHUB_OUTPUT
+            echo "::notice::No Python files found in skills/, skipping Python checks"
+          fi
+
+      - name: Setup Python
+        if: steps.check-python.outputs.has_python == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python linting tools
+        if: steps.check-python.outputs.has_python == 'true'
+        run: |
+          pip install ruff pyright
+
+      - name: Run ruff (lint)
+        if: steps.check-python.outputs.has_python == 'true'
+        run: ruff check skills/ --output-format=github
+        continue-on-error: true
+
+      - name: Run pyright (typecheck)
+        if: steps.check-python.outputs.has_python == 'true'
+        run: pyright skills/
+        continue-on-error: true
+
+      - name: Check for pytest tests
+        if: steps.check-python.outputs.has_python == 'true'
+        id: check-pytest
+        run: |
+          if find skills -name "*_test.py" -o -name "test_*.py" 2>/dev/null | grep -q .; then
+            echo "has_pytest=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_pytest=false" >> $GITHUB_OUTPUT
+            echo "::notice::No Python tests found, skipping pytest"
+          fi
+
+      - name: Install pytest
+        if: steps.check-python.outputs.has_python == 'true' && steps.check-pytest.outputs.has_pytest == 'true'
+        run: pip install pytest
+
+      - name: Run pytest
+        if: steps.check-python.outputs.has_python == 'true' && steps.check-pytest.outputs.has_pytest == 'true'
+        run: pytest skills/ -v
+        continue-on-error: true
