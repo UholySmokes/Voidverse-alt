@@ -10,6 +10,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   node-ci:
     name: Node.js CI
@@ -82,14 +85,12 @@ jobs:
 
       - name: Run ruff (lint)
         if: steps.check-python.outputs.has_python == 'true'
-        run: |
-          ruff check skills/ --output-format=github || true
+        run: ruff check skills/ --output-format=github
         continue-on-error: true
 
       - name: Run pyright (typecheck)
         if: steps.check-python.outputs.has_python == 'true'
-        run: |
-          pyright skills/ || true
+        run: pyright skills/
         continue-on-error: true
 
       - name: Check for pytest tests
