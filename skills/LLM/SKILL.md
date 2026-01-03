@@ -51,7 +51,7 @@ Before using the SDK, you must create a `.z-ai-config` file. The SDK will search
    }
    ```
 
-**Note**: The `baseUrl` should include the `/v1` prefix (e.g., `https://api.example.com/v1`). The `.z-ai-config` file is already in `.gitignore` to prevent accidental credential exposure.
+**Note**: The `baseUrl` should include the `/api/paas/v4/` prefix (e.g., `https://api.example.com/api/paas/v4/`). The `.z-ai-config` file is already in `.gitignore` to prevent accidental credential exposure.
 
 ## CLI Usage (For Simple Tasks)
 
