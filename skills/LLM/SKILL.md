@@ -26,6 +26,33 @@ The LLM skill allows you to build applications that leverage large language mode
 
 The z-ai-web-dev-sdk package is already installed. Import it as shown in the examples below.
 
+### Configuration File Setup
+
+Before using the SDK, you must create a `.z-ai-config` file. The SDK will search for this file in the following locations (in order):
+
+1. Current project directory (`./.z-ai-config`)
+2. User home directory (`~/.z-ai-config`)
+3. System directory (`/etc/.z-ai-config`)
+
+**Setup Instructions:**
+
+1. Copy the example configuration file:
+   ```bash
+   cp .z-ai-config.example .z-ai-config
+   ```
+
+2. Edit `.z-ai-config` with your credentials:
+   ```json
+   {
+     "baseUrl": "YOUR_API_BASE_URL",
+     "apiKey": "YOUR_API_KEY",
+     "chatId": "OPTIONAL_CHAT_ID",
+     "userId": "OPTIONAL_USER_ID"
+   }
+   ```
+
+**Note**: The `baseUrl` should include the `/v1` prefix (e.g., `https://api.example.com/v1`). The `.z-ai-config` file is already in `.gitignore` to prevent accidental credential exposure.
+
 ## CLI Usage (For Simple Tasks)
 
 For simple, one-off chat completions, you can use the z-ai CLI instead of writing code. This is ideal for quick tests, simple queries, or automation scripts.
@@ -812,6 +839,9 @@ initZAI().then(() => {
 ```
 
 ## Troubleshooting
+
+**Issue**: "Configuration file not found or invalid"
+- **Solution**: Create a `.z-ai-config` file in your project root with valid credentials. Copy `.z-ai-config.example` and fill in your API credentials. See the Prerequisites section for details.
 
 **Issue**: "SDK must be used in backend"
 - **Solution**: Ensure z-ai-web-dev-sdk is only imported and used in server-side code
