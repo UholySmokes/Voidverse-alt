@@ -5,8 +5,7 @@
 The game now has:
 1. **Smart Option Generation** - Always 6 contextual options (4 normal, 2 extreme)
 2. **Character Creator** - Auto-complete missing character details
-3. **World Rules** - Physical healing is easy, mental healing takes time
-4. **Content Safety** - Age verification for adult themes with warnings
+3. **Content Safety** - Age verification for adult themes with warnings
 
 ## Testing the New Features
 
@@ -192,9 +191,6 @@ backend/engine/optionGenerator.js
 
 # Character creation
 backend/engine/characterGenerator.js
-
-# World rules
-backend/engine/worldRules.js
 
 # Content rating
 backend/engine/contentRating.js

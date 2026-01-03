@@ -2,15 +2,14 @@
 
 ## Overview
 
-This document describes the new options generation, character creation, and world rules systems implemented for Voidverse RPG.
+This document describes the new options generation, character creation, and content safety systems implemented for Voidverse RPG.
 
 ## Table of Contents
 
 1. [Option Generation System](#option-generation-system)
 2. [Character Creation & Autocomplete](#character-creation--autocomplete)
-3. [World Rules & Healing](#world-rules--healing)
-4. [Content Rating & Safety](#content-rating--safety)
-5. [API Reference](#api-reference)
+3. [Content Rating & Safety](#content-rating--safety)
+4. [API Reference](#api-reference)
 
 ---
 
@@ -192,124 +191,6 @@ Response:
   "character": { /* complete character */ },
   "gameState": { /* ready-to-use game state */ }
 }
-```
-
----
-
-## World Rules & Healing
-
-### Physical vs Psychological Healing
-
-#### Physical Healing
-
-**Rules:**
-- Physical injuries heal EASILY and RAPIDLY
-- Severed limbs, diseases, chronic conditions = like treating a cold
-- Magical/medical/technological healing is commonplace
-- Body parts can regrow or be replaced
-- Physical trauma is NOT a big deal in this world
-
-**Implementation:**
-```javascript
-import { canHealPhysicalCondition } from './engine/worldRules.js';
-
-const result = canHealPhysicalCondition("broken arm", context);
-// Returns:
-// {
-//   canHeal: true,
-//   healingType: 'magical-medical',
-//   timeframe: 'Minuten bis Stunden',
-//   cost: 'minimal'
-// }
-```
-
-#### Psychological Healing
-
-**Rules:**
-- Mental conditions change REALISTICALLY and GRADUALLY
-- No magical therapy or instant healing
-- Trauma, PTSD, anxiety require TIME and PROCESSING
-- Positive experiences slowly improve mental state
-- Negative experiences can worsen conditions
-
-**Implementation:**
-```javascript
-import { canHealPsychologicalCondition } from './engine/worldRules.js';
-
-const result = canHealPsychologicalCondition("trauma", context);
-// Returns:
-// {
-//   canHeal: true,
-//   healingType: 'gradual-realistic',
-//   requirements: ['Positive experiences', 'Time', 'Processing'],
-//   timeframe: 'Wochen bis Monate',
-//   canWorsen: true
-// }
-```
-
-### Transformation Rules
-
-#### Valid Transformations
-
-Extreme transformations (gender, identity, metamorphosis) require **explicit magical context**:
-
-Valid magical contexts:
-- ✅ Reincarnation/rebirth
-- ✅ Bloodline awakening
-- ✅ Divine intervention
-- ✅ Magical artifacts
-- ✅ System evolution events
-- ✅ Void energy manipulation
-
-#### Validation
-
-```javascript
-import { validateTransformation } from './engine/worldRules.js';
-
-const transformation = {
-  type: 'gender change',
-  trigger: 'reincarnation',
-  target: 'character body'
-};
-
-const result = validateTransformation(transformation, context);
-// Returns:
-// {
-//   valid: true,
-//   reason: 'Transformation durch Reinkarnation narrativ gerechtfertigt',
-//   permanent: true,
-//   consequences: [...]
-// }
-```
-
-Without magical context:
-```javascript
-const result = validateTransformation({
-  type: 'gender change',
-  trigger: 'decided to change',
-  target: 'character'
-}, context);
-// Returns:
-// {
-//   valid: false,
-//   reason: 'Extreme Transformation ohne magischen Kontext nicht erlaubt',
-//   blocked: true
-// }
-```
-
-### Integration with LLM
-
-The world rules are encoded in the LLM prompts:
-
-**From systemPrompt.txt:**
-```
-World Rules (CRITICAL):
-Healing & Body:
-- Physical injuries/diseases heal EASILY and MAGICALLY
-- Psychological changes are REALISTIC and GRADUAL
-Transformations:
-- Extreme transformations require EXPLICIT magical context
-- WITHOUT magical justification, transformations DO NOT occur
 ```
 
 ---
@@ -611,7 +492,6 @@ All systems are modular:
 - Add new option types in `optionGenerator.js`
 - Add new character traits in `characterGenerator.js`
 - Add new content categories in `contentRating.js`
-- Extend world rules in `worldRules.js`
 
 ---
 

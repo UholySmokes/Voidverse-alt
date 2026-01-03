@@ -29,31 +29,7 @@ The system dynamically adjusts based on:
 6. Versuchen, die Void-Materie zu essen, aus reiner Neugier (extrem)
 ```
 
-#### 2. **World Rules: Physical vs Psychological Healing**
-**Fully Implemented ✅**
-
-The system now enforces your unique world rules:
-
-**Physical Healing** = **Easy & Magical**
-- Broken bones, severed limbs, diseases heal like a cold in our world
-- Magical/medical/technological healing is commonplace
-- Body parts can regrow or be replaced
-- Physical trauma is NOT a big deal
-
-**Psychological Healing** = **Realistic & Gradual**
-- Trauma, PTSD, anxiety, depression require TIME
-- Positive experiences slowly improve mental state
-- Negative experiences can worsen conditions
-- NO magical therapy or instant fixes
-- Changes tracked with progress system
-
-**Transformations** = **Require Magic**
-- Extreme transformations (gender, identity, metamorphosis) MUST have magical context
-- Valid contexts: Reincarnation, bloodline awakening, divine intervention, artifacts
-- System blocks transformations without proper justification
-- Fundamental changes are usually permanent
-
-#### 3. **Character Creation with Autocomplete**
+#### 2. **Character Creation with Autocomplete**
 **Fully Working ✅**
 
 Players can now:
@@ -85,7 +61,7 @@ Output:
 - Full backstory generated
 ```
 
-#### 4. **Content Rating & Age Verification**
+#### 3. **Content Rating & Age Verification**
 **Fully Implemented ✅**
 
 Automatic content safety system:
@@ -117,7 +93,7 @@ Wenn du dich unwohl fühlst, kannst du jederzeit eine andere Option wählen.
 - Opt-out mechanisms (undo button)
 - Crisis help resources in guidelines
 
-#### 5. **Emotional Communication Through Narrative**
+#### 4. **Emotional Communication Through Narrative**
 **Implemented in Prompts ✅**
 
 Emotional states are now communicated through:
@@ -142,14 +118,13 @@ backend/
 │   ├── optionGenerator.test.js      # 4/4 tests passing
 │   ├── characterGenerator.js        # Full autocomplete system
 │   ├── characterGenerator.test.js   # 5/5 tests passing
-│   ├── worldRules.js                # Healing & transformation rules
 │   ├── contentRating.js             # Content analysis & age verification
-│   └── integration.test.js          # 12/12 checks passing
+│   └── integration.test.js          # 9/9 checks passing
 ├── routes/
 │   ├── play.js                      # Updated with all new systems
 │   └── character.js                 # Character creation endpoint
 └── llm/
-    ├── systemPrompt.txt             # Updated with world rules
+    ├── systemPrompt.txt             # Updated system prompt
     ├── rulesPrompt.txt              # Complete rule system
     └── storyPrompt.template.txt     # Updated instructions
 
@@ -180,12 +155,9 @@ All systems tested and passing:
    - Game state conversion
    - Variety check
 
-✅ Integration Test: 12/12 checks passed
+✅ Integration Test: 9/9 checks passed
    - Character creation → Game state
    - Option generation → 6 contextual options
-   - Physical healing → Easy & magical
-   - Psychological healing → Gradual & realistic
-   - Transformation validation → With/without magic
    - Content analysis → Safe & adult
    - Age verification → Valid & invalid
 ```
@@ -252,9 +224,6 @@ Every requirement from your German specification has been implemented:
 |-------------|--------|-------|
 | 6 Optionen (4 normal, 2 extrem) | ✅ | With dynamic adjustment (5:1 or 3:3 in escalated scenes) |
 | Kontextsensitive Optionen | ✅ | Based on psychology, stats, events |
-| Physische Heilung = einfach | ✅ | Like treating a cold |
-| Psyche = realistisch | ✅ | Gradual with progress tracking |
-| Transformationen = magisch | ✅ | Validated, blocks without context |
 | Charaktererstellung | ✅ | Full system |
 | Autocomplete | ✅ | Intelligent gap-filling |
 | Psychologische Traits | ✅ | Disorders, fears, trauma |
@@ -288,9 +257,8 @@ The system is **fully functional and tested**. You can:
 
 1. ✅ Play the game with automatic 6-option generation
 2. ✅ Create characters with autocomplete
-3. ✅ Experience the world rules (easy physical, hard mental healing)
-4. ✅ See content warnings and age verification
-5. ✅ Everything works together seamlessly
+3. ✅ See content warnings and age verification
+4. ✅ Everything works together seamlessly
 
 ## 📞 Next Steps
 
@@ -316,7 +284,7 @@ The system is **fully functional and tested**. You can:
 **Implemented by:** GitHub Copilot
 **Date:** 2024-12-31
 **Status:** ✅ Complete and tested
-**Tests:** All passing (21/21)
+**Tests:** All passing (18/18)
 **Documentation:** Complete (3 files, 26KB+)
 
 🎊 **Viel Erfolg mit dem Spiel!** 🎊
