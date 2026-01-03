@@ -133,10 +133,6 @@ export default function LitRPGGenerator() {
         if (index >= generatedStory.length) {
           clearInterval(interval);
           setIsTyping(false);
-          // Clear generatedStory after typing completes to avoid duplication
-          // The story is already stored in gameState.story
-          setGeneratedStory('');
-          setDisplayedText('');
         }
       }, 15);
       return () => clearInterval(interval);
@@ -186,32 +182,27 @@ export default function LitRPGGenerator() {
           choices: data.choices,
         };
 
-        // Update game state with story, scene, and stats in a single update to avoid race conditions
-        setGameState(prev => {
-          const baseUpdate = {
+        setGameState(prev => ({
+          ...prev,
+          story: [...prev.story, newSegment],
+          currentScene: data.sceneImage,
+        }));
+
+        // Update stats based on story
+        if (data.statChanges) {
+          setGameState(prev => ({
             ...prev,
-            story: [...prev.story, newSegment],
-            currentScene: data.sceneImage,
-          };
-
-          // Include stats changes if present
-          if (data.statChanges) {
-            return {
-              ...baseUpdate,
-              stats: { ...prev.stats, ...data.statChanges },
-              character: data.levelChange
-                ? {
-                    ...prev.character,
-                    level: prev.character.level + 1,
-                    experience: 0,
-                    experienceToNext: prev.character.experienceToNext * 1.5,
-                  }
-                : prev.character,
-            };
-          }
-
-          return baseUpdate;
-        });
+            stats: { ...prev.stats, ...data.statChanges },
+            character: data.levelChange
+              ? {
+                  ...prev.character,
+                  level: prev.character.level + 1,
+                  experience: 0,
+                  experienceToNext: prev.character.experienceToNext * 1.5,
+                }
+              : prev.character,
+          }));
+        }
       }
     } catch (error) {
       console.error('Story generation failed:', error);
@@ -490,8 +481,7 @@ export default function LitRPGGenerator() {
                         <p className="text-sm mt-2">Generate a story to begin your journey!</p>
                       </div>
                     ) : (
-                      // If typing, exclude the last segment (it's being shown in the typewriter section)
-                      (isTyping ? gameState.story.slice(0, -1) : gameState.story).map((segment) => (
+                      gameState.story.map((segment) => (
                         <motion.div
                           key={segment.id}
                           initial={{ opacity: 0, x: -20 }}

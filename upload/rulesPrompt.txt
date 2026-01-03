@@ -3,7 +3,7 @@ VOIDVERSE CORE RULES
 Ability System:
 - Few ability cores (Seeds/Kerne) - these are permanent foundations
 - New powers manifest as temporary aspects
-- Too many aspects (40+) trigger MANDATORY fusion
+- Too many aspects (4+) trigger MANDATORY fusion
 - Fusion combines aspects into essence for cores or new aspects
 - No "skill trees" - evolution is organic and contextual
 
@@ -22,7 +22,7 @@ Evolution Principles:
 - The Void rewards boldness and punishes hesitation
 
 Fusion Mechanics:
-- 40+ aspects = automatic fusion
+- 4+ aspects = automatic fusion
 - Player can manually fuse 2-3 aspects
 - Fusion consumes aspects permanently
 - Results are semi-random with logic
@@ -43,7 +43,22 @@ Story Integration:
 - Social consequences of power exist
 - The world reacts to the player's abilities
 
-WORLD PHYSICS:
+WORLD PHYSICS & HEALING RULES (CRITICAL):
+
+Physical Healing:
+- Physical injuries, diseases, and damage heal EASILY and RAPIDLY
+- Severed limbs, Parkinson's, chronic illnesses = like treating a cold in our world
+- Magical/medical/technological healing is commonplace and unremarkable
+- Body parts can regrow or be replaced routinely
+- Severe physical trauma is NOT a big deal in this world
+
+Psychological Reality:
+- Mental conditions change REALISTICALLY and GRADUALLY
+- No magical therapy or instant psychological healing
+- Trauma, PTSD, anxiety, depression require TIME and PROCESSING
+- Positive experiences slowly improve mental state
+- Negative experiences can worsen psychological conditions
+- Personality changes through story events, not magic
 
 Transformation Rules:
 - EXTREME transformations need EXPLICIT magical justification:
@@ -71,10 +86,21 @@ Options Generation Rules:
   * Quiet activities
   * Social/adaptive behaviors
 - EXTREME options (absurd, dissociative, psychologically unusual):
+  * Dissociative actions
+  * Overly emotional/irrational
   * Self-testing/dangerous
   * Trauma-responses
+  * Absurd behaviors
 - In escalated scenes: Can be 5:1 or 3:3
-- ALL options must fit current context
+- ALL options must fit current context and character psychology
+- Options reflect realistic human responses to extreme situations
+
+Character Psychology:
+- Characters have complex, believable psychologies
+- Past trauma affects current behavior
+- Dissociation, anxiety, and stress manifest realistically
+- Character backstory influences available options
+- Psychological traits persist and evolve gradually
 
 Content Handling:
 - Adult themes (suicidality, violence, self-harm) handled with care
@@ -84,8 +110,9 @@ Content Handling:
 - Emotional states shown through narrative, not UI
 
 Remember:
+- Physical = Easy to heal
+- Mental = Hard to change
 - Transformations = Need magic
 - Options = Always 6, context-appropriate
 - Characters = Complex and realistic
-
 
