@@ -26,7 +26,7 @@ Level: ${character.level}
 Stats: Dominance ${stats.dominance}, Control ${stats.control}, Awareness ${stats.awareness}, Vitality ${stats.vitality}
 Cores: ${cores.map((c: any) => c.name).join(', ')}
 
-Write a LitRPG-style story segment (6-9 paragraphs) based on the player's action: "${prompt}"
+Write a LitRPG-style story segment (6-9 paragraphs, each 3-5 sentences) based on the player's action: "${prompt}"
 
 Requirements:
 - Include vivid descriptions of the environment and characters
