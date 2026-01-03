@@ -841,7 +841,7 @@ initZAI().then(() => {
 ## Troubleshooting
 
 **Issue**: "Configuration file not found or invalid"
-- **Solution**: Create a `.z-ai-config` file in your project root with valid credentials. Copy `.z-ai-config.example` and fill in your API credentials. See the Prerequisites section for details.
+- **Solution**: Create a `.z-ai-config` file in your project root with valid credentials. Copy `.z-ai-config.example` and fill in your API credentials. See the Configuration File Setup section under Prerequisites for details.
 
 **Issue**: "SDK must be used in backend"
 - **Solution**: Ensure z-ai-web-dev-sdk is only imported and used in server-side code
