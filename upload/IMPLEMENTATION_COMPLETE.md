@@ -119,7 +119,7 @@ backend/
 │   ├── characterGenerator.js        # Full autocomplete system
 │   ├── characterGenerator.test.js   # 5/5 tests passing
 │   ├── contentRating.js             # Content analysis & age verification
-│   └── integration.test.js          # 12/12 checks passing
+│   └── integration.test.js          # 9/9 checks passing
 ├── routes/
 │   ├── play.js                      # Updated with all new systems
 │   └── character.js                 # Character creation endpoint
