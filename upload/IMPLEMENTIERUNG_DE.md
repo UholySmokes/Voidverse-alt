@@ -35,32 +35,7 @@ Das System generiert jetzt automatisch **exakt 6 Handlungsoptionen** pro Szene:
 - Kontextsensitive Generierung basierend auf Psychologie
 - Integration in `/play` Endpoint
 
-### 2. Realistische, aber magische Welt
-
-**Status: Vollständig implementiert**
-
-**Heilung & Körper:**
-- Physische Verletzungen heilen magisch und schnell (wie bei uns eine Grippe)
-- Abgetrennte Gliedmaßen, Parkinson, schwere Krankheiten = einfach heilbar
-- Körperteile können nachwachsen oder ersetzt werden
-- **Psychologische Veränderungen sind realistisch und graduell** - keine magische Heilung
-
-**Übernatürliche Transformationen:**
-- Nur mit explizitem magischen Kontext erlaubt:
-  - ✅ Reinkarnation
-  - ✅ Blutlinien-Erwachen
-  - ✅ Göttlicher Eingriff
-  - ✅ Magische Artefakte
-  - ✅ System-Evolution
-- **OHNE** magischen Kontext: Transformationen werden blockiert
-- System prüft narrative Rechtfertigung
-
-**Technische Umsetzung:**
-- `backend/engine/worldRules.js` - Validierung und Regeln
-- LLM-Prompts aktualisiert mit Weltregeln
-- `systemPrompt.txt`, `rulesPrompt.txt` enthalten jetzt die Regeln
-
-### 3. Charaktererstellung & Autovervollständigung
+### 2. Charaktererstellung & Autovervollständigung
 
 **Status: Vollständig implementiert**
 
@@ -101,7 +76,7 @@ Das System generiert jetzt automatisch **exakt 6 Handlungsoptionen** pro Szene:
 - `POST /character/create` - API Endpoint
 - Vollständig getestet
 
-### 4. Optionengenerierung: Dynamik und Authentizität
+### 3. Optionengenerierung: Dynamik und Authentizität
 
 **Status: Vollständig implementiert**
 
@@ -134,33 +109,7 @@ Optionen werden stark kontextabhängig generiert:
 - Separate Pools für normale und extreme Optionen
 - Kontextsensitive Erweiterung der Pools
 
-### 5. Persistenz von Attributen und Veränderungen
-
-**Status: Vollständig implementiert**
-
-**Physische Veränderungen:**
-- Heilen realistisch schnell (magisch)
-- Können spontan auftreten oder verschlimmern
-- In passenden Szenen: Magische Heilung möglich
-
-**Psychischer Wandel:**
-- Graduell durch Entscheidungen und Ereignisse
-- Niemals "magisch" heilbar
-- Tracking von Heilungsfortschritt im Spielstatus
-- Positive Erfahrungen → Verbesserung
-- Negative Erfahrungen → Verschlechterung
-
-**Transformationen:**
-- Mit magischem Kontext: Meist dauerhaft
-- System prüft Permanenz
-- Konsequenzen werden generiert
-
-**Technische Umsetzung:**
-- `worldRules.js` enthält Persistenzlogik
-- `applyHealing()` für graduelle Veränderungen
-- `updatePsychologicalProgress()` für Fortschritt-Tracking
-
-### 6. Umgang mit Tabu-/Erwachsenenthemen
+### 4. Umgang mit Tabu-/Erwachsenenthemen
 
 **Status: Vollständig implementiert**
 
@@ -209,7 +158,7 @@ Wenn du dich unwohl fühlst, kannst du jederzeit eine andere Option wählen.
 - `/play/verify-age` Endpoint für Altersbestätigung
 - Integration in Story-Generierung
 
-### 7. Gefühlsmeta/Zustands-Kommunikation
+### 5. Gefühlsmeta/Zustands-Kommunikation
 
 **Status: Implementiert in Prompts**
 
@@ -238,13 +187,12 @@ backend/
 │   ├── optionGenerator.test.js      # Tests
 │   ├── characterGenerator.js        # Charaktererstellung
 │   ├── characterGenerator.test.js   # Tests
-│   ├── worldRules.js                # Heilung & Transformationen
 │   └── contentRating.js             # Inhaltsbewertung & Altersverifikation
 ├── routes/
 │   ├── play.js                      # Hauptspiel-Endpoint (erweitert)
 │   └── character.js                 # Charaktererstellung-Endpoint
 └── llm/
-    ├── systemPrompt.txt             # Aktualisiert mit Weltregeln
+    ├── systemPrompt.txt             # Aktualisierter System-Prompt
     ├── rulesPrompt.txt              # Aktualisiert mit allen Regeln
     └── storyPrompt.template.txt     # Aktualisiert
 
@@ -346,9 +294,6 @@ Alle Anforderungen aus der Spezifikation wurden erfüllt:
 |-------------|---------|----------------|
 | 6 Optionen (4 normal, 2 extrem) | ✅ | `optionGenerator.js` |
 | Kontextsensitive Optionen | ✅ | `analyzeContext()` |
-| Physische Heilung = einfach | ✅ | `worldRules.js` |
-| Psyche = realistisch | ✅ | `worldRules.js` |
-| Transformationen = magischer Kontext | ✅ | `validateTransformation()` |
 | Charaktererstellung | ✅ | `characterGenerator.js` |
 | Autocomplete | ✅ | `generateCharacter()` |
 | Psychologische Traits | ✅ | `completePsychologicalTraits()` |
