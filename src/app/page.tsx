@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -98,6 +98,22 @@ export default function LitRPGGenerator() {
   const [selectedAspects, setSelectedAspects] = useState<Set<string>>(new Set());
   const storyEndRef = useRef<HTMLDivElement>(null);
   const [isTyping, setIsTyping] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Track client mount to avoid hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Generate deterministic particle positions based on index (for SSR consistency)
+  const particleData = useMemo(() => {
+    return [...Array(20)].map((_, i) => ({
+      left: ((i * 37 + 13) % 100),
+      top: ((i * 23 + 7) % 100),
+      duration: (i % 3) + 2,
+      delay: (i % 5),
+    }));
+  }, []);
 
   // Auto-scroll story
   useEffect(() => {
@@ -281,7 +297,7 @@ export default function LitRPGGenerator() {
       {/* Animated background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTI4LCAwLCAxMjgsIDAuMSkiLz48L3N2Zz4=')] opacity-20"></div>
-        {[...Array(20)].map((_, i) => (
+        {isMounted && particleData.map((particle, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-purple-400 rounded-full"
@@ -290,13 +306,13 @@ export default function LitRPGGenerator() {
               opacity: [0, 1, 0],
             }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: particle.delay,
             }}
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
             }}
           />
         ))}
