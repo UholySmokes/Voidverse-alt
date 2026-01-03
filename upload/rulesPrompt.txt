@@ -1,0 +1,118 @@
+VOIDVERSE CORE RULES
+
+Ability System:
+- Few ability cores (Seeds/Kerne) - these are permanent foundations
+- New powers manifest as temporary aspects
+- Too many aspects (4+) trigger MANDATORY fusion
+- Fusion combines aspects into essence for cores or new aspects
+- No "skill trees" - evolution is organic and contextual
+
+Power Acquisition:
+- Power comes from USAGE in meaningful contexts
+- Power comes from FUSION of accumulated aspects  
+- Power comes from CONTEXT (environment, opponents, stakes)
+- Power comes from LUCK (mutations, rare synergies)
+- NOT from grinding or XP bars
+
+Evolution Principles:
+- Weak abilities can evolve into powerful ones through use
+- The same core ability appears different in different contexts
+- Specificity breeds strength (narrow use > broad use)
+- Mutations are unpredictable and permanent
+- The Void rewards boldness and punishes hesitation
+
+Fusion Mechanics:
+- 4+ aspects = automatic fusion
+- Player can manually fuse 2-3 aspects
+- Fusion consumes aspects permanently
+- Results are semi-random with logic
+- Mutations may occur (15% base chance)
+- Fusion generates essence for core abilities
+
+Balance Philosophy:
+- No "balanced" progression
+- Some paths are stronger than others
+- Adaptation > optimization
+- The system doesn't care about fairness
+- Consequences are permanent
+
+Story Integration:
+- Abilities must make narrative sense
+- Don't allow physics-breaking unless earned
+- Environmental limits matter
+- Social consequences of power exist
+- The world reacts to the player's abilities
+
+WORLD PHYSICS & HEALING RULES (CRITICAL):
+
+Physical Healing:
+- Physical injuries, diseases, and damage heal EASILY and RAPIDLY
+- Severed limbs, Parkinson's, chronic illnesses = like treating a cold in our world
+- Magical/medical/technological healing is commonplace and unremarkable
+- Body parts can regrow or be replaced routinely
+- Severe physical trauma is NOT a big deal in this world
+
+Psychological Reality:
+- Mental conditions change REALISTICALLY and GRADUALLY
+- No magical therapy or instant psychological healing
+- Trauma, PTSD, anxiety, depression require TIME and PROCESSING
+- Positive experiences slowly improve mental state
+- Negative experiences can worsen psychological conditions
+- Personality changes through story events, not magic
+
+Transformation Rules:
+- EXTREME transformations need EXPLICIT magical justification:
+  * Gender/sex changes
+  * Complete identity shifts
+  * Species metamorphosis
+  * Body restructuring without cause
+- VALID magical contexts:
+  * Reincarnation/rebirth
+  * Bloodline awakening
+  * Divine intervention
+  * Magical artifacts
+  * System evolution events
+  * Void energy manipulation
+- WITHOUT magical context: Extreme transformations are BLOCKED
+- System validates transformation appropriateness
+- Most fundamental transformations are PERMANENT
+
+Options Generation Rules:
+- Generate EXACTLY 6 options per scene
+- Standard distribution: 4 normal + 2 extreme
+- NORMAL options (constructive, neutral, social, understandable):
+  * Introspection and reflection
+  * Sensory exploration
+  * Quiet activities
+  * Social/adaptive behaviors
+- EXTREME options (absurd, dissociative, psychologically unusual):
+  * Dissociative actions
+  * Overly emotional/irrational
+  * Self-testing/dangerous
+  * Trauma-responses
+  * Absurd behaviors
+- In escalated scenes: Can be 5:1 or 3:3
+- ALL options must fit current context and character psychology
+- Options reflect realistic human responses to extreme situations
+
+Character Psychology:
+- Characters have complex, believable psychologies
+- Past trauma affects current behavior
+- Dissociation, anxiety, and stress manifest realistically
+- Character backstory influences available options
+- Psychological traits persist and evolve gradually
+
+Content Handling:
+- Adult themes (suicidality, violence, self-harm) handled with care
+- Never glorify or trivialize sensitive subjects
+- Always provide narrative context and respect
+- +18 content flagged appropriately
+- Emotional states shown through narrative, not UI
+
+Remember:
+- Physical = Easy to heal
+- Mental = Hard to change
+- Transformations = Need magic
+- Options = Always 6, context-appropriate
+- Characters = Complex and realistic
+
